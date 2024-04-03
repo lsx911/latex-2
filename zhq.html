@@ -12,10 +12,13 @@
   <script>
     document.getElementById("userInput").addEventListener("keyup", function () {
       var userInput = document.getElementById("userInput").value;
-      document.getElementById("output").innerHTML = userInput;
+      userInput = userInput.replace(/\*/, "\\times");
+      userInput = userInput.replace(/\//, "\\div");
+      userInput = userInput.replace(/>=/, "\\geqslant");
+      userInput = userInput.replace(/<=/, "\\leqslant");
+      userInput = userInput.replace(/\%/, "\\%");
+      document.getElementById("output").innerHTML = "\\(" + userInput + "\\)";
     });
   </script>
-
-</body>
 
 </html>
