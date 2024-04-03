@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+  <title>用户输入示例</title>
+</head>
 <body>
-
   <h2>用户输入示例</h2>
-
   <input type="text" id="userInput">
-
   <p id="output"></p>
-
   <script>
-    document.getElementById("userInput").addEventListener("keyup", function () {
+    document.getElementById("userInput").addEventListener("keyup", function() {
       var userInput = document.getElementById("userInput").value;
       userInput = userInput.replace(/\*/, "\\times");
       userInput = userInput.replace(/\//, "\\div");
       userInput = userInput.replace(/>=/, "\\geqslant");
       userInput = userInput.replace(/<=/, "\\leqslant");
       userInput = userInput.replace(/\%/, "\\%");
-      document.getElementById("output").innerHTML = "\\(" + userInput + "\\)";
+      document.getElementById("output").innerHTML = " \( " + userInput + " \) ";
     });
   </script>
-
+</body>
 </html>
