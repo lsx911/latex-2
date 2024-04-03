@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h2>用户输入示例</h2>
+
+  <input type="text" id="userInput">
+
+  <p id="output"></p>
+
+  <script>
+    document.getElementById("userInput").addEventListener("keyup", function () {
+      var userInput = document.getElementById("userInput").value;
+      document.getElementById("output").innerHTML = userInput;
+    });
+  </script>
+
+</body>
+
+</html>
