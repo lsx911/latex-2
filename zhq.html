@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>用户输入示例</title>
+  <title>latextrans</title>
 </head>
 <body>
-  <h2>用户输入示例</h2>
-  <input type="text" id="userInput">
-  <p id="output"></p>
+   <div style="text-align: center;">
+    <h2>Input</h2> <!-- 将<h2>居中 -->
+  </div>
+
+  <div style="display: flex; justify-content: space-around; align-items: center;">
+    <input type="text" id="userInput" style="height: 50px; width: 400px;">
+  </div> <!-- 设置文本框上下变高、左右变长 -->
+  <br> <!-- 换行 -->
+      <div style="text-align: center;">
+    <h2>Output</h2> <!-- 将<h2>居中 -->
+      </div>
+  <div style="display: flex; justify-content: space-around; align-items: center;">
+    <input type="text" id="output" style="height: 50px; width: 400px;">
+  </div> <!-- 设置文本框上下变高、左右变长 -->
+<!--  <p id="output"></p>-->
   <script>
     document.getElementById("userInput").addEventListener("keyup", function() {
       var userInput = document.getElementById("userInput").value;
-      userInput = userInput.replace(/\*/, "\\times");
-      userInput = userInput.replace(/\//, "\\div");
-      userInput = userInput.replace(/>=/, "\\geqslant");
-      userInput = userInput.replace(/<=/, "\\leqslant");
-      userInput = userInput.replace(/\%/, "\\%");
-      document.getElementById("output").innerHTML = " \( " + userInput + " \) ";
+      userInput = userInput.replace(/[\*]/g, " \\times ");
+      userInput = userInput.replace(/[\/]/g, " \\div ");
+      userInput = userInput.replace(/>=/g, " \\geqslant ");
+      userInput = userInput.replace(/<=/g, " \\leqslant ");
+      userInput = userInput.replace(/\%/g, "\\%");
+      document.getElementById("output").value = " \\( " + userInput + " \\) ";
     });
   </script>
 </body>
