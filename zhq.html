@@ -23,12 +23,12 @@
   <script>
     document.getElementById("userInput").addEventListener("keyup", function() {
       var userInput = document.getElementById("userInput").value;
-      userInput = userInput.replace(/[\*]/g, " \\times ");
-      userInput = userInput.replace(/[\/]/g, " \\div ");
-      userInput = userInput.replace(/>=/g, " \\geqslant ");
-      userInput = userInput.replace(/<=/g, " \\leqslant ");
+      userInput = userInput.replace(/[\*]/g, "\\times ");
+      userInput = userInput.replace(/[\/]/g, "\\div ");
+      userInput = userInput.replace(/>=/g, "\\geqslant ");
+      userInput = userInput.replace(/<=/g, "\\leqslant ");
       userInput = userInput.replace(/\%/g, "\\%");
-      document.getElementById("output").value = "\\( " + userInput + " \\)";
+      document.getElementById("output").value = "\\(" + userInput + "\\)";
     });
   </script>
 <div style="text-align: center;">
