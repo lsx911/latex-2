@@ -20,6 +20,25 @@
     <input type="text" id="output" style="height: 50px; width: 400px;">
   </div> <!-- 设置文本框上下变高、左右变长 -->
 <!--  <p id="output"></p>-->
+  
+<div style="text-align: center;">
+    <meta charset="UTF-8">
+    <h2 style="font-size: 12px;">说明：将用户输入的"*"变成"\times"，"/"变成"\div"，">="变成"\geqslant"，"<="变成"\leqslant"，"%"变成"\%"，并在语句前后加上”\(“，”\)“</h2> <!-- 将<h2>居中 -->
+  </div>
+  
+  <div style="display:flex; justify-content: space-around; flex-direction: column;align-items: center;">
+        分子
+    <input type="text" id="numerator" style="height: 50px; width: 200px;"> <!-- 分子输入框 -->
+       分母
+    <input type="text" id="denominator" style="height: 50px; width: 200px;"> <!-- 分母输入框 -->
+       输出分数
+    <input type="text" id="result" style="height: 50px; width: 400px;"> <!-- 结果输出框 -->
+  </div> <!-- 设置文本框在页面左边 -->
+
+<div style="text-align: center;">
+    <meta charset="UTF-8">
+    <h2 style="font-size: 12px;">说明：将用户输入的分子、分母变为\frac{分子}{分母}</h2> <!-- 将<h2>居中 -->
+  </div>
   <script>
     document.getElementById("userInput").addEventListener("keyup", function() {
       var userInput = document.getElementById("userInput").value;
@@ -31,10 +50,20 @@
       document.getElementById("output").value = "\\(" + userInput + "\\)";
     });
   </script>
-<div style="text-align: center;">
-    <meta charset="UTF-8">
-    <h2 style="font-size: 12px;">说明：将用户输入的"*"变成"\times"，"/"变成"\div"，">="变成"\geqslant"，"<="变成"\leqslant"，"%"变成"\%"，并在语句前后加上”\(“，”\)“</h2> <!-- 将<h2>居中 -->
-  </div>
 
+<script>
+    document.getElementById("numerator").addEventListener("keyup", function () {
+      var numerator = document.getElementById("numerator").value;
+<!--      document.getElementById("result").value = "\\frac{" + numerator + "}{";-->
+      fenzi = numerator ;
+      document.getElementById("result").value = "\\frac{"+ fenzi + "}{"+ fenmu + "}";
+    });
+
+    document.getElementById("denominator").addEventListener("keyup", function () {
+      var denominator = document.getElementById("denominator").value;
+       fenmu =  denominator;
+       document.getElementById("result").value = "\\frac{"+ fenzi + "}{"+ fenmu + "}";
+    });
+  </script>
 </body>
 </html>
