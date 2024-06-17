@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="display: flex; flex-direction: column; align-items: center;">
+  <input type="text" id="inputText" style="width: 800px; height: 200px;">
+  <button onclick="processText()">处理并输出</button>
+  <textarea id="outputText" rows="10" cols="50" style="width: 800px; height: 200px;"></textarea>
+
+  <script>
+    function processText() {
+      const input = document.getElementById('inputText').value;
+      let count = 0;
+      let result = '';
+      for (let i = 0; i < input.length; i++) {
+        const char = input.charAt(i);
+        if (char === '$') {
+          count++;
+          if (count % 2 === 1) {
+            result += '\\(';
+          } else {
+            result += '\\)';
+          }
+        } else if (char === '\t') {
+          result += '\\t';
+        } else {
+          result += char;
+        }
+      }
+      document.getElementById('outputText').value = result;
+    }
+  </script>
+</body>
+
+</html>
