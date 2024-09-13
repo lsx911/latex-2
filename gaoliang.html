@@ -23,21 +23,21 @@
       height: 240px;
       font-size: 15px;
       text-align: left;
-      margin - top: 20px;
-      white - space: pre - line;
+      margin-top: 20px;
+      white-space: pre-line;
     }
 
-    #clickedOutput {
+/*     #clickedOutput {
       width: 1800px;
       height: 100px;
       font-size: 15px;
       text-align: left;
-      margin - top: 20px;
+      margin-top: 20px;
       border: 1px solid #ccc;
-    }
+    } */
 
- .highlight {
-      background - color: yellow;
+  .highlight {
+      background-color: yellow;
       cursor: pointer;
     }
   </style>
@@ -56,35 +56,15 @@
       const value = this.value;
       const regex = /\d*[\./]?\d[%]?/g;
       const lines = value.split('\n');
-      let highlightedLines = [];
-      for (let line of lines) {
-        let newLine = line;
-        let match;
-        let lastIndex = 0;
-        while ((match = regex.exec(line))!== null) {
-          newLine = newLine.slice(0, match.index + lastIndex) +
-            `<span class="highlight" onclick="addClickedNumber('${match[0]}')">${match[0]}</span>` +
-            newLine.slice(match.index + match[0].length + lastIndex);
-          lastIndex += match[0].length + '<span class="highlight" onclick="addClickedNumber(\'' + match[0] + '\')">'.length + '</span>'.length;
-        }
-        highlightedLines.push(newLine);
-      }
-      outputBox.innerHTML = `<pre>${highlightedLines.join('<br>')}</pre>`;
+      let highlightedLines = lines.map(line => {
+        return line.replace(regex, match => `<span class="highlight" onclick="addClickedNumber('${match}')">${match}</span>`);
+      });
+      outputBox.innerHTML = highlightedLines.join('<br>');
     });
 
-    function addClickedNumber(number) {
-      clickedOutput.innerHTML += number + ' ';
-    }
-
-    outputBox.addEventListener('copy', function (e) {
-      const selection = window.getSelection();
-      let selectedText = selection.toString();
-      let div = document.createElement('div');
-      div.innerHTML = outputBox.innerHTML;
-      selectedText = div.outerHTML;
-      e.clipboardData.setData('text/plain', selectedText);
-      e.preventDefault();
-    });
+    // function addClickedNumber(number) {
+    //   clickedOutput.innerHTML += number + ' ';
+    // }
   </script>
 </body>
 
