@@ -37,7 +37,7 @@
         }
 
       .highlight {
-            background-color: yellow;
+            background-color: #7fff00;
             cursor: pointer;
         }
     </style>
@@ -50,37 +50,39 @@
 
 
     <script>
-        const inputBox = document.getElementById('inputBox');
-        const outputBox = document.getElementById('output');
-        const clickedOutput = document.getElementById('clickedOutput');
+           const inputBox = document.getElementById('inputBox');
+   const outputBox = document.getElementById('output');
+   const clickedOutput = document.getElementById('clickedOutput');
 
 
-        inputBox.addEventListener('input', function () {
-            const value = this.value;
-            const regex = /\d*[\./]?\d[%]?/g;
-            const lines = value.split('\n');
-            let highlightedLines = lines.map(line => {
-                return line.replace(regex, match => {
-                    return `<span class="highlight" onclick="addClickedNumber('${match}')">${match}</span>`;
-                });
-            });
-            outputBox.innerHTML = highlightedLines.join('<br>');
-            updateClickedOutput();
-        });
+   inputBox.addEventListener('input', function () {
+       const value = this.value;
+       const regex = /\d+(?:[\./]\d+)?[%]?/g;
+       const lines = value.split('\n');
+       let highlightedLines = lines.map(line => {
+           return line.replace(regex, match => {
+               return `<span class="highlight" onclick="addClickedNumber('${match}')">${match}</span>`;
+           });
+       });
+       outputBox.innerHTML = highlightedLines.join('<br>');
+       updateClickedOutput();
+   });
 
-        function addClickedNumber(number) {
-            updateClickedOutput();
-        }
 
-        function updateClickedOutput() {
-            const elements = document.querySelectorAll('.highlight');
-            const numbers = [];
-            elements.forEach(element => {
-                numbers.push(element.textContent);
-            });
-            let outputText = '["' + numbers.join('", "') + '"]';
-            clickedOutput.value = outputText;
-        }
+   function addClickedNumber(number) {
+       updateClickedOutput();
+   }
+
+
+   function updateClickedOutput() {
+       const elements = document.querySelectorAll('.highlight');
+       const numbers = [];
+       elements.forEach(element => {
+           numbers.push(element.textContent);
+       });
+       let outputText = '["' + numbers.join('", "') + '"]';
+       clickedOutput.value = outputText;
+   }
 
 
     </script>
